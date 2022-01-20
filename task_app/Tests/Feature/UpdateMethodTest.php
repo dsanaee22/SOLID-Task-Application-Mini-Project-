@@ -75,15 +75,8 @@ class UpdateMethodTest extends TestCase
         Auth::logout();
         $this->login(2);
 
-        FeatherTaskResponseController::shouldReceive('taskIdNotValid')->once();
+        FeatherTaskResponseController::shouldReceive('userCantTamperTasks')->once();
         $this->updateTask($updateData, $id);
     }
 
-
-    public function testTaskIdIsValidWhenDoingUpdate()
-    {
-        $this->withoutExceptionHandling();
-        FeatherTaskResponseController::shouldReceive('userCantTamperTasks')->once();
-        $this->updateTask(['name' => 'danial'], 60);
-    }
 }

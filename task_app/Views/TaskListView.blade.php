@@ -18,7 +18,7 @@
                     <td class="centering">{{ $task->description }}</td>
                     <td class="centering">
                           <span class="badge badge-primary">
-                                {!! ['Not Set !','Done !','Doing !','Failed !','Skipped !','Not Started!'][(int)TaskApp\Classes\StoreTempState::getState($task)] !!}
+                                {!! ['Not Set !','Done !','Doing !','Failed !','Skipped !','Not Started!'][(int)TaskApp\DB\StoreTempState::getState($task)] !!}
                           </span>
                     </td>
 

@@ -52,7 +52,7 @@ class FeatherTaskResponse
             ]);
     }
 
-    public function userCantTamperTasks(): RedirectResponse
+    public function userCantTamperTasks()
     {
         return redirect()
             ->route('tasks.index')

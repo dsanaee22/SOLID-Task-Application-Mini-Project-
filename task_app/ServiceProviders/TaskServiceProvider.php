@@ -9,6 +9,7 @@ use TaskApp\Behaviors\Protection\auth;
 use TaskApp\Behaviors\Protection\PreventBannedUserToManagement;
 use TaskApp\Classes\StoreTempTag;
 use TaskApp\Models\Task;
+use TaskApp\Widgets\TaskList;
 
 class TaskServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,10 @@ class TaskServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        User::resolveRelationUsing('tasks', function () {
+            return $this->hasMany(Task::class);
+        });
+
         $this->mergeConfigFrom(base_path('task_app/config.php'), 'taskConfig');
     }
 
@@ -30,19 +35,14 @@ class TaskServiceProvider extends ServiceProvider
 
     public function boot()
     {
-//        TaskList::expireCache();
-
         $this->protection();
 
         StoreTempTag::install();
 
-        User::resolveRelationUsing('tasks', function () {
-            return $this->hasMany(Task::class);
-        });
+        TaskList::expireCache();
 
         Route::middleware('web')
             ->group(base_path('task_app/Routes/routes.php'));
-
 
         $this->loadMigrationsFrom([
             base_path('task_app/Database/Migrations')

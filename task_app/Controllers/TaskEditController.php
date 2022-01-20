@@ -23,9 +23,6 @@ class TaskEditController
     {
         HeyMan::checkPoint('task.edit');
         $task = TaskStore::edit($id);
-        $task->getOr(function () {
-            return TaskCrudResponseController::failedShowEditForm();
-        });
         return TaskCrudResponseController::showEditForm($task);
     }
 

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace TaskApp\Classes;
+namespace TaskApp\DB;
 
 
 use TaskApp\Models\Task;

@@ -4,6 +4,7 @@
 namespace TaskApp\Classes;
 
 
+use TaskApp\DB\StoreTempState;
 use TaskApp\Models\Task;
 
 class StoreTempTag
@@ -11,12 +12,8 @@ class StoreTempTag
     public static function install()
     {
         Task::created(function ($task) {
-            StoreTempState::storeTag($task, now()->endOfDay(), request('state'));
+            request('state') && StoreTempState::storeTag($task, now()->endOfDay(), request('state'));
         });
-
-//        Task::updated(function ($task) {
-//            StoreTempState::storeTag($task, now()->endOfDay(), request('state'));
-//        });
 
         Task::deleted(function ($task) {
             StoreTempState::deleteTag($task);

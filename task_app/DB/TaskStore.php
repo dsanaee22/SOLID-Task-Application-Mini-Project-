@@ -3,7 +3,6 @@
 namespace TaskApp\DB;
 
 use Imanghafoori\Helpers\Nullable;
-use TaskApp\Classes\StoreTempState;
 use TaskApp\Models\Task;
 
 class TaskStore
@@ -25,20 +24,10 @@ class TaskStore
         return nullable($task);
     }
 
-    public static function edit($id): Nullable
+    public static function edit($id)
     {
-        try {
-            $task = Task::query()->find($id);
-        } catch (\Exception $e) {
-            return nullable();
-        }
-
-
-        if (!$task->exists()) {
-            return nullable();
-        }
-
-        return nullable($task);
+        $task = Task::query()->find($id);
+        return $task;
     }
 
     public static function update($id, $data, $userId): Nullable
@@ -71,6 +60,4 @@ class TaskStore
     {
         return count(Task::query()->where('user_id', $userId)->get());
     }
-
-
 }

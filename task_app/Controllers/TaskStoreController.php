@@ -32,7 +32,7 @@ class TaskStoreController
             return TaskCrudResponseController::failedDelete();
         });
 
-        return TaskCrudResponseController::failedDelete();
+        return TaskCrudResponseController::successCreate();
     }
 
 }

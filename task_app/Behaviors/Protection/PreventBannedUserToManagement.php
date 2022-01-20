@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Log;
 use Imanghafoori\HeyMan\Facades\HeyMan;
 use TaskApp\Controllers\Response\Controllers\FeatherTaskResponseController;
 use TaskApp\Controllers\Response\Controllers\YouAreBannedController;
-use TaskApp\UserBlocker;
+use TaskApp\Behaviors\Utility\UserBlocker;
+
 
 
 class PreventBannedUserToManagement

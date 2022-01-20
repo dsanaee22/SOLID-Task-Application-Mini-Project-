@@ -27,7 +27,6 @@ class TaskUpdateController
     {
         HeyMan::checkPoint('task.update');
         $task = TaskStore::update((int)$id, request()->only('name', 'description'), auth()->id());
-
         $task->getOr(function () {
             return TaskCrudResponseController::failedUpdate();
         });

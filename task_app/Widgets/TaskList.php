@@ -3,7 +3,7 @@
 namespace TaskApp\Widgets;
 
 use Illuminate\Support\Facades\Event;
-use TaskApp\Classes\StoreTempState;
+use TaskApp\DB\StoreTempState;
 use TaskApp\Classes\StoreTempTag;
 use TaskApp\Models\Task;
 
@@ -58,9 +58,8 @@ class TaskList
     public static function expireCache()
     {
         $fb = self::expireThisCache();
-        Task::creating($fb);
-//        Task::updating($fb);
-        Task::deleting($fb);
+//        Task::created($fb);
+//        Task::deleting($fb);
     }
 
     /**

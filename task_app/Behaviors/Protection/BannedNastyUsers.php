@@ -6,10 +6,7 @@ namespace TaskApp\Behaviors\Protection;
 
 use Imanghafoori\HeyMan\Facades\HeyMan;
 use TaskApp\Controllers\Response\Controllers\FeatherTaskResponseController;
-use TaskApp\Controllers\Response\Controllers\userBannedSource;
-use TaskApp\Controllers\Response\Controllers\UserBannedSourceController;
-use TaskApp\Controllers\Response\Response;
-use TaskApp\UserBlocker;
+use TaskApp\Behaviors\Utility\UserBlocker;
 use TaskApp\Widgets\StateWidget;
 
 class BannedNastyUsers

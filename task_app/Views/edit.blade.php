@@ -33,7 +33,7 @@
 
                         <div class="form-group my-2">
                         @php
-                            use TaskApp\Classes\StoreTempState;
+                            use TaskApp\DB\StoreTempState;
                             $state = StoreTempState::getState($task);
                             $states = [
                                 '1' => 'Done :)',
